@@ -1,16 +1,18 @@
 package core;
+
+import gameObjects.Ball;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import gameObjects.*;
 
 import static java.awt.Color.CYAN;
 
 public class Display extends JFrame{
 
 	// Static Variables
-	public static Image buff;
+	public static Image buffer;
 	public static Graphics2D bufferGraphics;
 	public static long frameNumber = 0;
 
@@ -46,8 +48,8 @@ public class Display extends JFrame{
 	}
 
 	public void init(){
-		buff = createImage(800,600);
-		bufferGraphics = (Graphics2D) buff.getGraphics();
+		buffer = createImage(800,600);
+		bufferGraphics = (Graphics2D) buffer.getGraphics();
 		this.ballOne = new Ball(0,0, 50, 50, CYAN);
 	}
 
@@ -60,7 +62,7 @@ public class Display extends JFrame{
 	}
 
 	public void update (Graphics g){
-		g.drawImage(buff, 0, 0, this);
+		g.drawImage(buffer, 0, 0, this);
 		bufferGraphics.clearRect(0,0, 800,600);
 		this.delay(10);
 		frameNumber = frameNumber + 1;
